@@ -1,0 +1,16 @@
+/* Navbar özel stilleri */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-start .btn-ghost:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.menu li a:hover {
+  transition: all 0.2s ease-in-out;
+}

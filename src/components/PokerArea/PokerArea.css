@@ -1,0 +1,24 @@
+/* PokerArea özel stilleri */
+
+.poker-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.poker-cards {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.poker-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.poker-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
