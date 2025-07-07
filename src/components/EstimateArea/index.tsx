@@ -1,3 +1,1 @@
-import EstimateArea from './EstimateArea';
-
-export default EstimateArea;
+export { default } from './EstimateArea';

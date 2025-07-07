@@ -10,20 +10,20 @@ const ParticipantCards: React.FC = () => {
   }));
 
   return (
-    <div className="flex-1 bg-base-100 rounded-lg p-4" style={{ minHeight: '400px' }}>
+    <div className="flex-1 bg-base-100 rounded-lg p-4">
       
-      <div className="grid grid-cols-6 gap-2 h-full">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-2 h-full">
         {participants.map((participant) => (
           <div
             key={participant.id}
-            className="bg-base-200 rounded-2xl p-4 flex flex-col items-center hover:bg-base-300 transition-colors cursor-pointer"
-            style={{ height: '118px' }}
+            className="bg-base-200 rounded-2xl p-4 flex flex-row md:flex-col items-center justify-between md:justify-start hover:bg-base-300 transition-colors cursor-pointer"
+            
           >
-            <h4 className="text-sm font-medium text-center mb-2">{participant.name}</h4>
+            <h4 className="text-sm font-medium text-center mb-0 md:mb-2">{participant.name}</h4>
             
-            <hr className="w-full border-current mb-4" />
+            <hr className="w-full border-current mb-4 hidden md:block" />
             
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex items-center justify-center md:flex-1">
               <span className="text-3xl">🧐</span>
             </div>
           </div>

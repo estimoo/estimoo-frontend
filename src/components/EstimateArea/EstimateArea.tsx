@@ -9,26 +9,26 @@ const EstimateArea: React.FC = () => {
     <div className="min-h-screen ">
       <div className="flex flex-col h-full min-h-[calc(100vh-5rem)] gap-4">
         <div className="flex gap-4">
-          <div className="w-1/4"></div>
+          
           
           <div className="flex-1 flex justify-center">
             <PokerResult />
           </div>
           
-          <div className="w-1/4"></div>
+          
         </div>
-        
+         
         <div className="flex-1  rounded-lg p-6">
           <div className="flex h-full flex-col gap-4">
-            <div className="flex flex-1 gap-4">
-              <AdBanner />
+            <div className="flex flex-col md:flex-row flex-1 gap-4">
+             <AdBanner />
               
               <ParticipantCards />
               
               <AdBanner />
             </div>
             
-            <div className="flex justify-center ">
+            <div className="hidden md:flex justify-center">
               <button className="btn btn-primary">Reveal Cards</button>
             </div>
           </div>
