@@ -46,7 +46,11 @@ export const useRoom = (roomCode: string | null) => {
         wsService.subscribeToRoom(roomCode, (data) => {
           console.log('🔄 Updating room data:', data);
           setRoom(prev => {
-            const newRoom = prev ? { ...prev, ...data } : data;
+            // users array'ini objeye çevir
+            const usersObj = (data.users && Array.isArray(data.users))
+              ? Object.fromEntries(data.users.map((u: any, i: number) => [u.nickname || `user${i}`, { nickname: u.nickname, vote: u.vote }]))
+              : data.users || {};
+            const newRoom = prev ? { ...prev, users: usersObj, votesRevealed: data.votesRevealed } : { ...data, users: usersObj };
             console.log('📈 New room state:', newRoom);
             return newRoom;
           });

@@ -32,7 +32,7 @@ export class WebSocketService {
       console.log('🔌 Attempting to connect to:', WS_BASE_URL);
       
       // SockJS requires http(s), not ws(s)
-      const socket = new SockJS(WS_BASE_URL);
+      const socket = new SockJS(`${WS_BASE_URL}?token=${sessionId}`);
       console.log('🔌 SockJS socket created');
 
       this.stompClient = Stomp.over(socket);

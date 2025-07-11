@@ -28,14 +28,14 @@ export const CreateRoom: React.FC<CreateRoomProps> = ({ onRoomCreated }) => {
           <h1 className="card-title text-2xl mb-6">Create New Room</h1>
           
           <div className="space-y-4">
-            <div className="form-control">
+            <div className="form-control flex flex-col gap-2">
               <label className="label">
                 <span className="label-text">Room Name</span>
               </label>
               <input
                 type="text"
                 placeholder="Enter room name"
-                className="input input-bordered"
+                className="input input-bordered w-full"
                 value={roomName}
                 onChange={(e) => setRoomName(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleCreateRoom()}
