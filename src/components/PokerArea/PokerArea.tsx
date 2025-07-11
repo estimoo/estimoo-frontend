@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PokerArea.css';
 
-const PokerArea: React.FC = () => {
+interface PokerAreaProps {
+  roomCode: string;
+  onVote: (vote: string) => void;
+  currentVote?: string;
+}
+
+const PokerArea: React.FC<PokerAreaProps> = ({ roomCode, onVote, currentVote }) => {
   const pokerCards = [
     { id: 1, value: '0' },
     { id: 2, value: '1' },
@@ -15,14 +21,23 @@ const PokerArea: React.FC = () => {
     { id: 10, value: '☕' }
   ];
 
+  const handleCardClick = (value: string) => {
+    onVote(value);
+  };
+
   return (
-    <div className="flex-1  rounded-lg p-3 ">
+    <div className="flex-1 rounded-lg p-3">
       <div className="flex justify-center items-center gap-4 flex-wrap h-full">
         {pokerCards.map((card) => (
           <div
             key={card.id}
-            className="relative rounded-lg bg-base-200 border border-neutral-700 text-white shadow-md hover:scale-105 transition-transform duration-200"
+            className={`relative rounded-lg border text-white shadow-md hover:scale-105 transition-transform duration-200 cursor-pointer ${
+              currentVote === card.value 
+                ? 'bg-primary border-primary' 
+                : 'bg-base-200 border-neutral-700'
+            }`}
             style={{ width: '60px', height: '90px' }}
+            onClick={() => handleCardClick(card.value)}
           >
            
             <div className="absolute inset-0 flex items-center justify-center text-2xl font-semibold">

@@ -1,38 +1,36 @@
 import React from 'react';
 import './AvatarGroup.css';
 
-const AvatarGroup: React.FC = () => {
+interface AvatarGroupProps {
+  users: Record<string, any>;
+}
+
+const AvatarGroup: React.FC<AvatarGroupProps> = ({ users }) => {
+  // Kullanıcıları array'e çevir
+  const userArray = Object.values(users || {});
+  
+  // İlk 3 kullanıcıyı göster, kalanı sayı olarak göster
+  const displayUsers = userArray.slice(0, 3);
+  const remainingCount = userArray.length - 3;
+
   return (
     <div className="avatar-group -space-x-2 rtl:space-x-reverse px-2">
-      <div className="avatar">
-        <div className="w-8 h-8">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" 
-            alt="User 1"
-          />
+      {displayUsers.map((user: any, index: number) => (
+        <div key={index} className="avatar">
+          <div className="w-8 h-8">
+            <div className="bg-primary text-primary-content w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium">
+              {user.nickname ? user.nickname.charAt(0).toUpperCase() : '?'}
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="avatar">
-        <div className="w-8 h-8">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            alt="User 2"
-          />
+      ))}
+      {remainingCount > 0 && (
+        <div className="avatar placeholder">
+          <div className="bg-neutral text-neutral-content w-8 h-8 flex items-center justify-center">
+            <span className="text-xs">+{remainingCount}</span>
+          </div>
         </div>
-      </div>
-      <div className="avatar">
-        <div className="w-8 h-8">
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            alt="User 3"
-          />
-        </div>
-      </div>
-      <div className="avatar placeholder">
-        <div className="bg-neutral text-neutral-content w-8 h-8 flex items-center justify-center">
-          <span className="text-xs">+2</span>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
